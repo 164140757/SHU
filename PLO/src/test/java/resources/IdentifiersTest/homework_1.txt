@@ -1,0 +1,30 @@
+// 编写一个PL/O程序，输入3个正整数a、b、c，按从小到大的顺序输出这三个数
+var a,b,c,t;
+begin
+    read(a);
+    read(b);
+    read(c);
+    if a > b then
+        begin
+            t := b;
+            b := a;
+            a := t; 
+        end
+    if b > c then
+        begin
+            t := b;
+            b := c;
+            c := t; 
+        end
+    if a > c then
+        begin
+            t := a;
+            a := c;
+            c := t; 
+        end
+    begin
+        write(a);
+        write(b);
+        write(c);
+    end
+end
