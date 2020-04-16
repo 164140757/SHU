@@ -87,9 +87,22 @@ class LexerTest {
 
 
     @Test
-    void scanTest() throws IOException, SyntaxException {
+    void otherTest() throws IOException, SyntaxException {
+        Writer writer = null;
+        try {
+            writer = new Writer("src\\test\\java\\resources\\IdentifiersTest" + "\\result\\" + "HomeworkResult.txt");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         Lexer lexer = new Lexer();
-        lexer.input("src\\test\\java\\resources\\IdentifiersTest\\case01.txt");
+        lexer.input("src\\test\\java\\resources\\IdentifiersTest\\homework_1.txt");
         lexer.scan();
+        HashMap<Word, Integer> statisticMap = lexer.getIDNums();
+        Vector<String> context = new Vector<>();
+        statisticMap.forEach((k, v) -> {
+            context.addAll(Arrays.asList("(", k.lexeme,": ", Integer.toString(v), ")", "\n"));
+        });
+        assert writer != null;
+        writer.write(context);
     }
 }
