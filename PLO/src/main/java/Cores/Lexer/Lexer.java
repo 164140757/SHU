@@ -19,12 +19,9 @@ public class Lexer {
     private String s = null;
     // words for reserved words and ID
     private HashMap<String, Token> words;
-    // only for ID nums
-    private HashMap<Word, Integer> IDNums;
 
     public Lexer() {
         words = new HashMap<>();
-        IDNums = new HashMap<>();
     }
 
     public void input(String filePath) throws IOException {
@@ -40,7 +37,7 @@ public class Lexer {
         }
         // handle whitespace
         int r;
-        while ((r = stream.read()) != -1 && Character.isDefined((char)r)) {
+        while ((r = stream.read()) != -1 && Character.isDefined((char) r)) {
             peek = (char) r;
             // handle comments
             handleComments();
@@ -55,7 +52,7 @@ public class Lexer {
             // isDefined for the safety purpose:
             // the buffer inside PushbackReader is of type char[],
             // so the integer -1 will get converted to char 0xFFFF(illegal
-            while (Character.isDefined(peek)&&!Character.isWhitespace(peek)) {
+            while (Character.isDefined(peek) && !Character.isWhitespace(peek)) {
                 sBuf.append(peek);
                 peek = (char) stream.read();
             }
@@ -67,12 +64,12 @@ public class Lexer {
     }
 
     private void handleTokens() {
-        // getNums();
+        getNums();
         // basic first , ID second
         getBASIC();
         getID();
-        // getOPE();
-        // getDELIMITER();
+        getOPE();
+        getDELIMITER();
     }
 
     private void handleComments() throws IOException, SyntaxException {
@@ -151,16 +148,28 @@ public class Lexer {
             int start = matcher.start();
             int end = matcher.end();
             String sub = s.substring(start, end);
-            if (tag == Tag.NUM) {
-                //TODO add variable table
-            } else {
-                Word word = new Word(tag, sub);
-                words.put(sub, word);
-                // ID nums
-                if (tag == Tag.ID) {
-                    IDNums.merge(word, 1, Integer::sum);
+
+            Word word = new Word(tag, sub);
+            // to be more specific
+//                words.put(sub, word);
+            // ID nums
+            switch (tag) {
+                case ID -> {
+
+                }
+                case NUM -> {
+                }
+                case OPE -> {
+
+                }
+                case BASIC -> {
+
+                }
+                case DELIMITER -> {
+
                 }
             }
+
             // concat
             s_ = s_.replace(sub, "");
         }
@@ -169,11 +178,12 @@ public class Lexer {
         // to make it more efficient
     }
 
-    public HashMap<Word, Integer> getIDNums() {
-        return IDNums;
-    }
 
     public HashMap<String, Token> getWords() {
         return words;
+    }
+
+    public HashMap<Word, Integer> getIDNums() {
+        return null;
     }
 }
