@@ -1,11 +1,8 @@
 package Cores.Lexer.Token;
 
 public class Token {
-    public final Tag tag;
-
-    public Token(Tag tag) {
-        this.tag = tag;
+    public final String type;
+    public Token(String type) {
+        this.type = type;
     }
-
-
 }
