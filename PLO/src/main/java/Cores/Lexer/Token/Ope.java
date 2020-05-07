@@ -3,7 +3,7 @@ package Cores.Lexer.Token;
 import java.util.Arrays;
 import java.util.HashSet;
 
-public class Ope extends Token {
+public class Ope extends Terminal {
     // operators (single character)
     private static HashSet<Character> opes;
     public String name;

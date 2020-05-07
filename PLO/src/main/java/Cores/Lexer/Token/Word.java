@@ -2,7 +2,7 @@ package Cores.Lexer.Token;
 
 import java.util.Objects;
 
-public class Word extends Token{
+public class Word extends Terminal{
     public final String lexeme;
     public Word(String type, String lexeme) {
         super(type);

@@ -1,10 +1,9 @@
 package Cores.Lexer.Token;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 
-public class Del extends Token{
+public class Del extends Terminal{
     public String name;
     private static HashSet<Character> del;
     public Del() {
