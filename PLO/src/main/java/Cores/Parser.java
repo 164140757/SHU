@@ -68,7 +68,12 @@ public class Parser {
         followSetChanged = new HashMap<>();
         select = new HashMap<>();
     }
-
+    public void run() throws IOException, GrammarError {
+        getFirst();
+        getFollow();
+        getSelect();
+        LL();
+    }
     /**
      * make sure their is no left recursion before using this class.
      */

@@ -7,7 +7,11 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PushbackReader;
 import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 
 import Utils.Token.*;
 
@@ -16,6 +20,7 @@ public class Lexer {
     private PushbackReader stream;
     public int line = 1;
     private char peek = ' ';
+    private HashSet<String> funcs;
     // words for reserved words and ID
     private HashMap<String, Word> words;
     private HashMap<Word, Integer> IDNums;
@@ -23,14 +28,18 @@ public class Lexer {
     public Lexer() {
         init();
     }
+    
 
     private void init() {
         words = new HashMap<>();
         IDNums = new HashMap<>();
+        funcs = new HashSet<>(Arrays.asList("sin","cos","tan","sqrt"));
         // reversed words
         reserve("begin", "call", "const", "do", "end"
                 , "if", "else", "odd", "procedure", "read", "then",
                 "var", "while", "write");
+        // reserve functions
+        reserve(funcs);
         Ope.init();
         Del.init();
 
@@ -46,12 +55,19 @@ public class Lexer {
         stream = new PushbackReader(reader);
     }
 
-    public void reserve(String... lexemes) {
+    private void reserve(String... lexemes) {
         for (String l : lexemes) {
-            Word word = new Word(l.toUpperCase(), l);
+            Word word = new Word(l);
             words.put(word.type, word);
         }
     }
+    private void reserve(Collection<String> lexemes) {
+        lexemes.forEach(e->{
+            Word word = new Word(e);
+            words.put(word.type, word);
+        });
+    }
+
 
     // scan a Token
     public Token scan() throws IOException {
@@ -90,16 +106,13 @@ public class Lexer {
             // push back
             stream.unread(peek);
             String s = sBuf.toString();
-            // uppercase
             Word w = words.get(s);
             if (w != null) {
                 // ID numbers
-                if (w.type.equals("ID")) {
-                    IDNums.put(w, IDNums.get(w) + 1);
-                }
+                IDNums.put(w, IDNums.get(w) + 1);
                 return w;
             }
-            w = new Word("ID", s);
+            w = new Word(s);
             words.put(s, w);
             IDNums.put(w, 1);
             return w;
@@ -247,5 +260,9 @@ public class Lexer {
 
     public HashMap<Word, Integer> getIDNums() {
         return IDNums;
+    }
+
+    public HashSet<String> getFuncs() {
+        return funcs;
     }
 }
