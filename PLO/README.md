@@ -7,8 +7,8 @@
 * [实验一 ：识别标识符](#标识符的识别)
 * [实验二 : 词法分析](#词法分析)
 * [实验三 ：语法分析](#语法分析)
-* 实验四 ：语义分析
-* 实验五 ：中间代码生成
+* [实验四 ：语义分析](#语义分析)
+* [实验五 ：中间代码生成](#中间代码生成)
 * 实验六 ： 代码优化
 
 > 项目框架
@@ -30,14 +30,15 @@
 输入 PL/0 语言源程序，输出源程序中所有标识符的出现次数。
 
 ### 实验要求
+
 * 识别程序读入 PL/0 语言源程序（文本文件），识别结果也以文本文
   件保存。
 * 按标识符出现的顺序输出结果， 每个标识符一行， 采用二元式序列，
   即： (标识符值, 标识符出现次数)
-*  源程序中字符不区分大小写，即：“a1” 和“A1” 是同一个标识符。
+* 源程序中字符不区分大小写，即：“a1” 和“A1” 是同一个标识符。
 * 准备至少 5 组测试用例，每组测试用例包括：输入源程序文件和输
   出结果。
-*  测试用例应该考虑各种合法标识符的组合情况。
+* 测试用例应该考虑各种合法标识符的组合情况。
 
 ### 输入输出样例
 
@@ -108,7 +109,7 @@ P={ A→0A1, A→01 }  判断000111是否合法
 
 A为文法G的开始符号  
 
-![image-20200410221842890](PLO 简易编译器的实现.assets/image-20200410221842890.png)
+![image-20200410221842890](README.assets/image-20200410221842890.png)
 
 ----------------------------------------------------------------------
 
@@ -129,7 +130,7 @@ A为文法G的开始符号
 
 在状态有限的条件下，也就是常说的FSM（finite state machine)，对该方法最为直接的运用便是正则表达式。
 
-![image-20200410222433229](PLO 简易编译器的实现.assets/image-20200410222433229.png)
+![image-20200410222433229](README.assets/image-20200410222433229.png)
 
 > 1 : A→01 ;   2 : A→0A1   ;  0...1...表示相同个数的0和1
 
@@ -166,7 +167,7 @@ endif state is a final state
 
 摸着石头过河必定会花费大量时间，但有时候也是值得的，特别是想要思考来龙去脉的时候。但要进行实现的时候，参考前人的经验，既可以激发思绪，也可以节省大量尝试时间。想要搭建较为满意的编译器，采用现有的结构框架是一个很好的做法。
 
-![image-20200411091204122](PLO 简易编译器的实现.assets/image-20200411091204122.png)
+![image-20200411091204122](README.assets/image-20200411091204122.png)
 
 这是著名的Dragon Book[2](#引用文章) 中的编译器的前端模型，后面内容会继续引用该图：
 
@@ -227,7 +228,7 @@ public enum Tag {
 
 #### 2. UML类图
 
-![image-20200419144728213](D:\Development\OneDrive - 365vip.plus\crossPlatform\markdowns\projects\compiler\PLO 简易编译器的实现.assets\image-20200419144728213.png)
+![image-20200419144728213](README.assets/image-20200419144728213.png)
 
 整个项目结构清晰，Lexer将输入的字符处理，主要用scan（）调用Tag中的NUM，与ID的识别方法，从而构建了相应的Token，并放入HashMap以存储字。
 
@@ -379,15 +380,15 @@ end
 
    在上一个步骤中，已经基本实现了词法分析，即将一段源代码作为输入，能够正确区分词的类型。这一步是对[上面](#1.定义Tag类)的补充。
 
-   ![image-20200419160821426](D:\Development\OneDrive - 365vip.plus\crossPlatform\markdowns\projects\compiler\PLO 简易编译器的实现.assets\image-20200419160821426.png)
+   ![image-20200419160821426](README.assets/image-20200419160821426.png)
 
    由于上次对Lexical Analyzer的功能有少许误解，这次修改scan（）功能，以只得到一个套接字。以方便后续Parser的编写。
 
    修改后的设计UML类图如下：
 
-   ![image-20200420213812615](D:\Development\OneDrive - 365vip.plus\crossPlatform\markdowns\projects\compiler\PLO 简易编译器的实现.assets\image-20200420213812615.png)
+   ![image-20200420213812615](README.assets/image-20200420213812615.png)
 
-4. 实验结果
+2. 实验结果
 
 举一个例子：case01.txt
 
@@ -474,10 +475,10 @@ end.
 1. 实验目的 
 
 * 给出 PL/0 文法规范，要求编写 PL/0 语言的语法分析程序。
-*  通过设计、编制、调试一个典型的语法分析程序，实现对词法分析
+* 通过设计、编制、调试一个典型的语法分析程序，实现对词法分析
   程序所提供的单词序列进行语法检查和结构分析，进一步掌握常用
   的语法分析方法。
-*  选择一种语法分析方法（递归子程序法、LL(1)分析法、算符优先分
+* 选择一种语法分析方法（递归子程序法、LL(1)分析法、算符优先分
   析法、SLR(1)分析法）；选择常见程序语言都具备的语法结构，如赋
   值语句，特别是表达式，作为分析对象。
 
@@ -509,13 +510,13 @@ end.
 
 * 对于语法错误的表达式，报告“语法错误”， 指出错误原因。
 * 源程序中字符不区分大小写，即：“a1”和“A1”是同一个标识符。
-*  准备至少 10 组测试用例，每组测试用例包括：输入文件和输出结果。
+* 准备至少 10 组测试用例，每组测试用例包括：输入文件和输出结果。
 
 **四、实验过程：**
 
 ### Big Picture
 
-![image-20200419160821426](D:\Development\OneDrive - 365vip.plus\crossPlatform\markdowns\projects\compiler\PLO 简易编译器的实现.assets\image-20200419160821426.png)
+![image-20200419160821426](README.assets/image-20200419160821426.png)
 
 引用Dragon Book[2](#引用文章) ，这一张图展示了Parser的两个主要功能
 
@@ -545,11 +546,12 @@ LL的主要功能就是预测，计算FLLOW, FIRST, SELECT 集为节点下行选
   $$
   算法：
 
-  ![image-20200503212127515](PLO%20%E7%AE%80%E6%98%93%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%9E%E7%8E%B0.assets/image-20200503212127515.png)
+  ![image-20200503212127515](README.assets/image-20200503212127515.png)
 
 * FOLLOW
 
   $FOLLOW(A)$表示以开A头的后跟符号集[2]（同理）
+
 $$
   FOLLOW(A) = \{a|\mu A\beta 且a\in V_T,a\in FIRST(\beta),\mu\in V^*_T,\beta\in V^+\}
 $$
@@ -557,13 +559,13 @@ $$
 
   一张图可以清晰的理解这两个概念上的差别。
 
-  ![image-20200503213835561](PLO%20%E7%AE%80%E6%98%93%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%9E%E7%8E%B0.assets/image-20200503213835561.png)
+  ![image-20200503213835561](README.assets/image-20200503213835561.png)
 
 有点像DFS（深度优先遍历）与BFS(广度优先遍历)，只不过不同的是这里的作用是预测A之后的行径，那么关注点限制了范围，即A的子孙节点，以及兄弟节点（仅右方）；或许A，a之间还有一些点，但都会被消掉（$\epsilon$），假如a是下一个要取得话。
 
-![image-20200503214823277](PLO%20%E7%AE%80%E6%98%93%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%9E%E7%8E%B0.assets/image-20200503214823277.png)
+![image-20200503214823277](README.assets/image-20200503214823277.png)
 
-![image-20200503214836604](PLO%20%E7%AE%80%E6%98%93%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%9E%E7%8E%B0.assets/image-20200503214836604.png)
+![image-20200503214836604](README.assets/image-20200503214836604.png)
 
 * SELECT
 
@@ -573,17 +575,17 @@ $若\alpha\Rightarrow \epsilon，则SELECT(A\to \alpha) = FIRTST(\alpha-\{\epsil
 
 ### 构建转换表
 
-![image-20200505170649012](PLO%20%E7%AE%80%E6%98%93%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%9E%E7%8E%B0.assets/image-20200505170649012.png)
+![image-20200505170649012](README.assets/image-20200505170649012.png)
 
-![image-20200505170716546](PLO%20%E7%AE%80%E6%98%93%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%9E%E7%8E%B0.assets/image-20200505170716546.png)
+![image-20200505170716546](README.assets/image-20200505170716546.png)
 
 如果用树来表示的话，即是首先DFS遍历，如果没找到下一个，那么进行BFS，如果BFS还没找到，说明不符合LL语法。
 
 ### 预测算法实现
 
-![image-20200505171948716](PLO%20%E7%AE%80%E6%98%93%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%9E%E7%8E%B0.assets/image-20200505171948716.png)
+![image-20200505171948716](README.assets/image-20200505171948716.png)
 
-![image-20200505172211172](PLO%20%E7%AE%80%E6%98%93%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%9E%E7%8E%B0.assets/image-20200505172211172.png)
+![image-20200505172211172](README.assets/image-20200505172211172.png)
 
 好了，基本的思路有了，但是在正式开始之前，还有一个基本的问题没有解决，因为用户输入的语法规则，毕竟不一定对LL语法是适合的，还需要包括消除左递归，提取左公因子，消除不确定性。
 
@@ -603,7 +605,7 @@ $A\to A^`\beta$
 
 $A^`\to \alpha A^`\space|\epsilon$
 
-![image-20200507150752919](PLO%20%E7%AE%80%E6%98%93%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%9E%E7%8E%B0.assets/image-20200507150752919.png)
+![image-20200507150752919](README.assets/image-20200507150752919.png)
 
 第6行消除直接递归，前面为间接递归。
 
@@ -617,7 +619,7 @@ $A\to \alpha (\beta\space|\space\gamma) $
 
 $A\to \alpha A^`,A^`\to\beta\space|\space\gamma$
 
-![image-20200507145322660](PLO%20%E7%AE%80%E6%98%93%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%9E%E7%8E%B0.assets/image-20200507145322660.png)
+![image-20200507145322660](README.assets/image-20200507145322660.png)
 
 #### 项目UML类图
 
@@ -630,28 +632,28 @@ $A\to \alpha A^`,A^`\to\beta\space|\space\gamma$
 1. 语法产生式定义：
 
    <表达式> ::= [+|-]<项>{<加法运算符> <项>}
-   
+
    <项> ::= <因子>{<乘法运算符> <因子>}
    <因子> ::= <标识符>|<无符号整数>| ‘(’<表达式>‘)’
    <加法运算符> ::= +|-
-<乘法运算符> ::= *|/
-   
+   <乘法运算符> ::= *|/
+
    ----
-   
+
    E -> AIB
-   
+
    I -> FC
-   
+
    F ->   D<标识符>|N<无符号整数>|(E)
-   
+
    P ->  +|-
-   
+
    M -> *|/
-   
+
    A -> P| $\epsilon$
-   
+
    B -> P I B |  $\epsilon$
-   
+
    C ->   M F C |  $\epsilon$
 
 #### FIRST集
@@ -714,11 +716,29 @@ $A\to \alpha A^`,A^`\to\beta\space|\space\gamma$
                         }
                         tmpFirstSet.addAll(tmp);
                         firstSet.addAll(tmp);
+                         // check if it contains empty, yes -> go on, no-> break;
+                        if(!(tmpFirstSet.contains(new Token("#")))){
+                            // clean tmp
+                           tmpFirstSet.clear();
+                           break;
+                       }
+                    
+                       // clean tmp
+                       tmpFirstSet.clear();
                     } else {
                         Production p_ = productions.get(token.toNonTerminal());
                         pEmpty = checkNonTerminal(p_, tmpFirstSet);
                         // add tmpFirstSet to FirstSet before removing tmpFirstSet for next input
                         firstSet.addAll(tmpFirstSet);
+                                // check if it contains empty, yes -> go on, no-> break;
+                        if(!(tmpFirstSet.contains(new Token("#")))){
+                            // clean tmp
+                           tmpFirstSet.clear();
+                           break;
+                       }
+                    
+                       // clean tmp
+                       tmpFirstSet.clear();
                         // clean tmp
                         tmpFirstSet.clear();
                     }
@@ -745,9 +765,409 @@ $A\to \alpha A^`,A^`\to\beta\space|\space\gamma$
     }
 ```
 
-我用书上的P72页例题4.5文法测试，得到所有的结果皆通过。
+#### FOLLOW集
+
+```java
+ /**
+     * getFirst() should be used for calling this Start index given '!' as the
+     * parentheses,'#' as empty
+     */
+    public void getFollow() {
+        assert (!first.isEmpty());
+        boolean changed = false;
+        do {
+            // update status
+            followSetChanged = new HashMap<>();
+            // start '!'
+            Set<Token> s = follow.get(grammar.getStartToken());
+            if (s == null) {
+                s = new HashSet<>();
+            }
+            s.add(new Token("!"));
+            follow.put(grammar.getStartToken(), s);
+            // production with index k
+            for (Entry<NonTerminal, Production> e : productions.entrySet()) {
+                NonTerminal k = e.getKey();
+                // index set
+                Set<NonTerminal> keySet = first.keySet();
+                Production v = e.getValue();
+                // a production
+                for (Vector<Token> production : v.target) {
+                    // a token
+                    for (int i = 0; i < production.size(); i++) {
+                        Token t = production.get(i);
+                        // only for keySet
+                        if (keySet.contains(t.toNonTerminal())) {
+                            // remember to change the type of equal()will get wrong.
+                            NonTerminal tt = t.toNonTerminal();
+                            // check i last one
+                            if (i == production.size() - 1) {
+                                Set<Token> set = follow.get(tt);
+                                if (set == null) {
+                                    set = new HashSet<>();
+                                }
+                                Set<Token> stmp = follow.get(k);
+                                if (stmp == null) {
+                                    stmp = new HashSet<>();
+                                }
+                                // record
+                                followSetChanged.put(tt, set.addAll(stmp));
+                                follow.put(tt, set);
+                            } else {
+                                // terminal next
+                                Token n = production.get(i + 1);
+                                if (isTer(n)) {
+                                    Set<Token> set = follow.get(tt);
+                                    if (set == null) {
+                                        set = new HashSet<>();
+                                    }
+                                    // record
+                                    followSetChanged.put(tt, set.add(n));
+                                    follow.put(tt, set);
+                                    // nonTerminal
+                                } else {
+                                    // next
+                                    Set<Token> set = first.get(n.toNonTerminal());
+                                    Set<Token> stmp = follow.get(tt);
+                                    if (stmp == null) {
+                                        stmp = new HashSet<>();
+                                    }
+                                    // if there's empty
+                                    if (set.contains(new Token("#"))) {
+                                        // add follow index
+                                        Set<Token> tmp = follow.get(k);
+                                        if (tmp == null) {
+                                            tmp = new HashSet<>();
+                                        }
+                                        set.addAll(tmp);
+                                    }
+                                    // for(Iterator<Token> iterator = set.iterator();iterator.hasNext();){ Token
+                                    // token = iterator.next(); if(token.context == "#"){
+                                    // iterator.remove(); } } I leave the code here to suggest that iterator
+                                    // will remove everything from source[HashMap first] be careful filter not empty
+                                    Set<Token> tmp = new HashSet<>();
+                                    for (Token token : set) {
+                                        if (token.context != "#")
+                                            tmp.add(token);
+                                    }
+                                    set = tmp;
+                                    // record
+                                    followSetChanged.put(tt, stmp.addAll(set));
+                                    follow.put(tt, stmp);
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+
+            // get changed
+            changed = followSetChanged.containsValue(true);
+        } while (changed);
+    }
+```
 
 
+
+#### SELECT集
+
+```java
+    /**
+     * should make sure getFirst and getFollow are done before.
+     */
+    public void getSelect() {
+        assert (!first.isEmpty() && !follow.isEmpty());
+        // iterate all productions
+        productions.forEach((k, v) -> {
+            // split productions
+            v.target.forEach(p -> {
+                // check if the target production is empty
+                HashSet<Token> firstSet = new HashSet<>();
+                Set<Token> tmpFirstSet = new HashSet<>();
+                Production pNew = new Production(k, p);
+                boolean isEmpty = checkProductionFirst(firstSet, tmpFirstSet, pNew);
+                if (isEmpty) {
+                    firstSet.remove(new Token("#"));
+                    firstSet.addAll(follow.get(k));
+                }
+                select.put(pNew, firstSet);
+            });
+
+        });
+    }
+```
+
+
+
+我用书上的P72页例题4.5文法，P92 的例题测试，得到所有的结果皆通过。
+
+![image-20200514171842257](README.assets/image-20200514171842257.png)
+
+其中一个测试用例：
+
+```java
+ @Test
+    void followTest_2() throws Exception {
+        // Page 93
+        String test = "E TA;A +TA;A #;T FB;B *FB;B #;F i;F (E)";
+        Grammar grammar = new Grammar(new NonTerminal("E"), Production.translate(test));
+        parser = new Parser(grammar);
+        parser.getFirst();
+        parser.getFollow();
+        HashMap<NonTerminal, Set<Token>> follow = parser.follow;
+        assertEquals(new HashSet<>(Arrays.asList(new Token("!"),new Token(")"))), 
+        follow.get(new NonTerminal("E")), "first set fails.");
+        
+        assertEquals(new HashSet<>(Arrays.asList(new Token(")"),new Token("!"))), 
+        follow.get(new NonTerminal("A")), "first set fails.");
+
+        assertEquals(new HashSet<>(Arrays.asList(new Token("+"),new Token("!"),new Token(")"))), 
+        follow.get(new NonTerminal("B")), "first set fails.");
+    }
+```
+
+### 测试
+
+输入测试用例
+
+```
+（a+15）*b
+```
+
+<表达式> ::= [+|-]<项>{<加法运算符> <项>}
+
+<项> ::= <因子>{<乘法运算符> <因子>}
+<因子> ::= <标识符>|<无符号整数>| ‘(’<表达式>‘)’
+<加法运算符> ::= +|-
+<乘法运算符> ::= *|/
+
+----
+
+E -> AIB
+
+I -> FC
+
+F ->   D<标识符>|N<无符号整数>|(E)
+
+P ->  +|-
+
+M -> *|/
+
+A -> P| $\epsilon$
+
+B -> P I B |  $\epsilon$
+
+C ->   M F C |  $\epsilon$
+
+![image-20200522140800968](README.assets/image-20200522140800968.png)
+
+测试通过！
+
+## 语义分析
+
+1. 实验目的 
+
+* 通过上机实习，加深对语法制导翻译原理的理解，掌握将语法分析
+  所识别的语法范畴变换为某种中间代码的语义翻译方法。
+* 掌握目前普遍采用的语义分析方法──语法制导翻译技术。
+* 给出 PL/0 文法规范，要求在语法分析程序中添加语义处理，对于语
+  法正确的算术表达式，输出其计算值。 
+
+**二、实验内容：**
+
+* 已给 PL/0 语言文法，在表达式的语法分析程序里，添加语义处理部分。
+
+
+**三、实验要求：**
+
+* 语义分析对象重点考虑经过语法分析后已是正确的语法范畴，实习
+  重点是语义子程序。
+* 在实验三“语法分析器”的里面添加 PL/0 语言“表达式”部分的语
+  义处理。
+* 计算表达式的语义值。
+* 准备至少 10 组测试用例，每组测试用例包括：输入文件和输出结果。
+
+**四、实验过程：**
+
+UML类图
+
+![image-20200524112517331](README.assets/image-20200524112517331.png)
+
+在前面的基础上加入这两个部分：
+<img src="../../OneDrive%2520-%2520365vip.plus/crossPlatform/markdowns/projects/compiler/PLO%2520%25E7%25AE%2580%25E6%2598%2593%25E7%25BC%2596%25E8%25AF%2591%25E5%2599%25A8%25E7%259A%2584%25E5%25AE%259E%25E7%258E%25B0.assets/image-20200524112845827.png" alt="image-20200524112845827" style="zoom:80%;" />
+
+![4](README.assets/image-20200524112637350.png)
+
+加入parse（）函数，定义语义动作，而对于非终结符给与综合属性与继承属性，终结符仅综合属性。
+
+目前仅对于算术表达式的语义分析进行实现，如下所示，该函数为parse（）函数中的一个部分。
+
+```java
+public static double eval(final String str,Map<Word,Double> variables) {
+
+        return new Object() {
+            int pos = -1, ch;
+    
+            void nextChar() {
+                ch = (++pos < str.length()) ? str.charAt(pos) : -1;
+            }
+    
+            boolean eat(int charToEat) {
+                while (ch == ' ') nextChar();
+                if (ch == charToEat) {
+                    nextChar();
+                    return true;
+                }
+                return false;
+            }
+    
+            double parse() {
+                nextChar();
+                double x = parseExpression();
+                if (pos < str.length()) throw new RuntimeException("Unexpected: " + (char)ch);
+                return x;
+            }
+    
+            // Grammar:
+            // expression = term | expression `+` term | expression `-` term
+            // term = factor | term `*` factor | term `/` factor
+            // factor = `+` factor | `-` factor | `(` expression `)`
+            //        | number | functionName factor | factor `^` factor
+    
+            double parseExpression() {
+                double x = parseTerm();
+                for (;;) {
+                    if      (eat('+')) x += parseTerm(); // addition
+                    else if (eat('-')) x -= parseTerm(); // subtraction
+                    else return x;
+                }
+            }
+    
+            double parseTerm() {
+                double x = parseFactor();
+                for (;;) {
+                    if      (eat('*')) x *= parseFactor(); // multiplication
+                    else if (eat('/')) x /= parseFactor(); // division
+                    else return x;
+                }
+            }
+    
+            double parseFactor() {
+                if (eat('+')) return parseFactor(); // unary plus
+                if (eat('-')) return -parseFactor(); // unary minus
+    
+                double x;
+                int startPos = this.pos;
+                if (eat('(')) { // parentheses
+                    x = parseExpression();
+                    eat(')');
+                } else if ((ch >= '0' && ch <= '9') || ch == '.') { // numbers
+                    while ((ch >= '0' && ch <= '9') || ch == '.') nextChar();
+                    x = Double.parseDouble(str.substring(startPos, this.pos));
+                } else if(Character.isLetterOrDigit(ch)){ // words predefined
+                    int tmp = this.pos;
+                    while(Character.isLetterOrDigit(ch)) nextChar();
+                    String words = str.substring(startPos, this.pos);
+                    //find 
+                    if(variables.containsKey(new Word(words))){
+                        x = variables.get(new Word(words));
+                    }
+                    // back
+                    else{
+                        pos = tmp;
+                        x = (Double) null;
+                    }
+                }else if (ch >= 'a' && ch <= 'z') { // functions
+                    while (ch >= 'a' && ch <= 'z') nextChar();
+                    String func = str.substring(startPos, this.pos);
+                    x = parseFactor();
+                    if (func.equals("sqrt")) x = Math.sqrt(x);
+                    else if (func.equals("sin")) x = Math.sin(Math.toRadians(x));
+                    else if (func.equals("cos")) x = Math.cos(Math.toRadians(x));
+                    else if (func.equals("tan")) x = Math.tan(Math.toRadians(x));
+                    else throw new RuntimeException("Unknown function: " + func);
+                } 
+                
+                else {
+                    throw new RuntimeException("Unexpected: " + (char)ch);
+                }
+    
+                if (eat('^')) x = Math.pow(x, parseFactor()); // exponentiation
+    
+                return x;
+            }
+        }.parse();
+    }
+```
+
+结果测试：
+
+<img src="../../OneDrive%2520-%2520365vip.plus/crossPlatform/markdowns/projects/compiler/PLO%2520%25E7%25AE%2580%25E6%2598%2593%25E7%25BC%2596%25E8%25AF%2591%25E5%2599%25A8%25E7%259A%2584%25E5%25AE%259E%25E7%258E%25B0.assets/image-20200524121309597.png" alt="image-20200524121309597" style="zoom:50%;" />
+
+验证一下： （0.213+15）*0.4 = 6.0852
+
+在这个equal（）中，我加入了从论坛借鉴的字符串解析，如tan，sin，cos，sqrt均可实现：
+
+测试：如((4 - 2^3 + 1) * -sqrt(3*3+4*4)) / 2 答案为7.5
+
+```java
+ HashMap<Word,Double> wordMap = new HashMap<>();
+          wordMap.put(new Word("a"), 0.213);
+          wordMap.put(new Word("b"), 0.4);
+          double res = Production.eval("(a+15)*b",wordMap); 
+          assertEquals(6.0852, res);
+          res = Production.eval("((4 - 2^3 + 1) * -sqrt(3*3+4*4)) / 2",wordMap); 
+          assertEquals( 7.5 , res);
+```
+
+后续需要将eval（）部分并入parse（）中，以解析赋值，if（）等其他语句。
+
+##  中间代码生成
+
+本章是最后一次实验了，从最开始搭建PLO到现在，也过了一学期的时间，其中还有许多功能未能实现，略有遗憾。选择中间代码生成实验，也是因为想按照顺序吧！【非常希望这套实验能成为期末考试的题目】总的来说，我从基本的数据结构出发，参考了经典读物实现了编译器的主要功能，包括词法分析，语法解析，语义分析；感觉到编译原理，是一个计算机读懂语言的过程，希望今后能从中受益！
+
+1. 实验目的 
+
+  * 通过上机实习，加深对语法制导翻译原理的理解，掌握将语法分析
+    所识别的语法范畴变换为某种中间代码的语义翻译方法。
+  * 掌握目前普遍采用的语义分析方法──语法制导翻译技术。
+  * 给出 PL/0 文法规范，要求在语法分析程序中添加语义处理，对于语法正确的表达式，输出其中间代码。
+
+2. 实验内容 
+
+   * 已给 PL/0 语言文法，在实验三的表达式语法分析程序里，添加语义处理部分输出表达式的中间代码，用四元式序列表示。
+
+3. 实验要求 
+
+  * 在实验三“语法分析器”的里面添加 PL/0 语言“表达式”部分的语
+    义处理，输出表达式的中间代码。
+  * 中间代码用四元式序列表示。
+  * 准备至少 10 组测试用例，每组测试用例包括：输入文件和输出结果。
+
+4. 实验过程
+
+   ![4](README.assets/image-20200524112637350.png)
+
+   在原有的Production类语义分析中，加入记录四元式的成分：（quaternary）
+
+   
+
+   ![image-20200619092630268](README.assets/image-20200619092630268.png)
+
+这个代码片段是记录word的，即标识符；而在对于操作符的记录：
+
+![image-20200619092903206](README.assets/image-20200619092903206.png)
+
+实现了记录并且开启下一行，因为一个记录符号即代表一个二元运算的解析，所以要为下一次的替换做好准备：
+
+* 测试结果如下
+
+  ![image-20200619094020675](README.assets/image-20200619094020675.png)
+
+输出结果：
+
+![image-20200619094041384](README.assets/image-20200619094041384.png)
 
 ## 引用文章
 
@@ -843,7 +1263,7 @@ $A\to \alpha A^`,A^`\to\beta\space|\space\gamma$
 
 ### ASCII
 
-![File:ASCII-Table.svg](PLO 简易编译器的实现.assets/738px-ASCII-Table.svg.png)
+![File:ASCII-Table.svg](README.assets/738px-ASCII-Table.svg.png)
 
 ### JAVA SE 14
 
