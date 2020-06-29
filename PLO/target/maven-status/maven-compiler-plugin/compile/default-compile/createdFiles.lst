@@ -1,0 +1,16 @@
+Utils\Token\Num.class
+UI\TestPanel.class
+Cores\Parser.class
+Exceptions\GrammarError.class
+Utils\Grammer\Grammar.class
+Utils\Token\Terminal.class
+Utils\Token\Ope.class
+Utils\Token\Word.class
+Utils\Token\NonTerminal.class
+Utils\Grammer\Production$1.class
+Utils\Token\Token.class
+Exceptions\SyntaxException.class
+Utils\Token\Del.class
+Utils\Grammer\Production.class
+Utils\Polisher\GrammarPolisher.class
+Cores\Lexer.class

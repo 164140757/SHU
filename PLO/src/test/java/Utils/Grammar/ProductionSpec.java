@@ -5,7 +5,7 @@
  * @LastEditors: Haotian Bai
  * @LastEditTime: 2020-05-24 12:16:54
  * @FilePath: \PLO\src\test\java\Utils\Grammar\ProductionSpec.java
- * @Description: 
+ * @Description:
  */
 package Utils.Grammar;
 
@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Vector;
 
 import org.junit.jupiter.api.Test;
 
@@ -53,7 +54,7 @@ public class ProductionSpec {
 
     @Test
     void evalTest() throws GrammarError, Exception {
-          // Page 72 4.5
+        // Page 72 4.5
         //   String test = "E AIB;I FC;F D|N|(E);P +|-;M *|/;A P|#;B PIB|#;C MFC|#";
         //   // add definition
         //   Production.addDefinition('D', Word.class);
@@ -63,16 +64,44 @@ public class ProductionSpec {
         //   lexer.inputString("(a+15)*b");
         //   Parser parser = new Parser(grammar,lexer);
         //   parser.run();
-          //TODO add eval() to parse() the parse() to run()
-          HashMap<Word,Double> wordMap = new HashMap<>();
-          wordMap.put(new Word("a"), 0.213);
-          wordMap.put(new Word("b"), 0.4);
-          double res = Production.eval("(a+15)*b",wordMap); 
-          assertEquals(6.0852, res);
-          res = Production.eval("((4 - 2^3 + 1) * -sqrt(3*3+4*4)) / 2",wordMap); 
-          assertEquals( 7.5 , res);
+        //TODO add eval() to parse() the parse() to run()
+        HashMap<Word, Double> wordMap = new HashMap<>();
+        wordMap.put(new Word("a"), 0.213);
+        wordMap.put(new Word("b"), 0.4);
+        Vector<Vector<String>> tmp = new Vector<>();
+        tmp.add(new Vector<>());
+        double res = Production.eval("(a+15)*b", wordMap, tmp);
+        assertEquals(6.0852, res);
+        tmp = new Vector<>();
+        tmp.add(new Vector<>());
+        res = Production.eval("((4 - 2^3 + 1) * -sqrt(3*3+4*4)) / 2", wordMap,tmp);
+        assertEquals(7.5, res);
+    }
+
+    @Test
+    void test(){
+        Vector<Vector<String>> tmp = new Vector<>();
+        HashMap<Word, Double> wordMap = new HashMap<>();
+        wordMap.put(new Word("a"), 0.213);
+        wordMap.put(new Word("b"), 0.4);
+        wordMap.put(new Word("d"), 0.4);
+        wordMap.put(new Word("c"), 0.4);
+
+        tmp.add(new Vector<>());
+        double res = Production.eval("(a+15)*b", wordMap, tmp);
+        assertEquals(6.0852, res);
+        System.out.println(tmp.toString());
+        tmp = new Vector<>();
+        tmp.add(new Vector<>());
+        res = Production.eval("(a+c)*b*d", wordMap, tmp);
+        System.out.println(tmp.toString());
+
+        tmp = new Vector<>();
+        tmp.add(new Vector<>());
+        res = Production.eval("((a+c)*b)+2", wordMap, tmp);
+        System.out.println(tmp.toString());
 
 
     }
-    
+
 }

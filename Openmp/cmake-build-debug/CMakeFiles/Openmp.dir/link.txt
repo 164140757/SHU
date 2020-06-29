@@ -1,3 +1,0 @@
-"D:\environment\jetbrains\CLion 2020.1\bin\cmake\win\bin\cmake.exe" -E remove -f CMakeFiles\Openmp.dir/objects.a
-D:\environment\programming\mingw\mingw64\bin\ar.exe cr CMakeFiles\Openmp.dir/objects.a @CMakeFiles\Openmp.dir\objects1.rsp
-D:\environment\programming\mingw\mingw64\bin\g++.exe  -fconcepts -fopenmp -g   -Wl,--whole-archive CMakeFiles\Openmp.dir/objects.a -Wl,--no-whole-archive  -o Openmp.exe -Wl,--out-implib,libOpenmp.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Openmp.dir\linklibs.rsp

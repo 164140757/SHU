@@ -16,12 +16,12 @@ public class Ope extends Terminal {
     // operators (single character)
     private static HashSet<Character> opes;
 
-    public Ope(String name) {
-        super("OPE",name);
+    public Ope(String context) {
+        super("OPE","",context);
     }
 
-    public Ope(String name,String context) {
-        super("OPE",name,context);
+    public Ope(String subType,String context) {
+        super("OPE",subType,context);
     }
 
     public static void init() {
@@ -41,11 +41,9 @@ public class Ope extends Terminal {
             return false;
         }
         final Ope ope = (Ope) o;
-        return this
-            .context
-            .equals(ope.context) && this.sign.equals(ope.sign);
+        return this.context.equals(ope.context) ;
     }
     @Override public int hashCode() {
-        return Objects.hash(this.context,this.sign);
+        return Objects.hash(this.context);
     }
 }

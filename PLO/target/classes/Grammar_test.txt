@@ -1,0 +1,11 @@
+R > | < | =;
+J CS;
+CS IF C THEN S;
+C E R E;
+S ID := E;
+I F I_;
+I_ / F | * F | #;
+E I E_;
+E_ + I | - I | #;
+F ID | N | ( E );
+

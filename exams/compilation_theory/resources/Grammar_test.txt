@@ -1,0 +1,11 @@
+C` -> IF C THEN S;
+C -> E R E;
+R -> > | < | =;
+S -> I`∶= E;
+E -> I + I;
+E -> I - I;
+E -> I;
+I -> F * F;
+I -> F / F;
+I -> F;
+F -> E;

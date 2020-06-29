@@ -1,0 +1,4 @@
+/usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /mnt/d/Development/SHU/exams/compilation_theory
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /mnt/d/Development/SHU/exams/compilation_theory/cmake-build-debug

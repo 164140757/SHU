@@ -26,7 +26,7 @@ import Exceptions.GrammarError;
 import Utils.Token.*;
 import Utils.Grammer.Grammar;
 import Utils.Grammer.Production;
-import Utils.IO.Writer;
+//import Utils.IO.Writer;
 
 public class ParserTest {
 
@@ -115,11 +115,10 @@ public class ParserTest {
 
     @Test
     void LL() throws Exception, GrammarError {
-        // Page 72 4.5
         String test = "E AIB;I FC;F D|N|(E);P +|-;M *|/;A P|#;B PIB|#;C MFC|#";
         // add definition
-        Production.addDefinition('D', Word.class);
-        Production.addDefinition('N', Num.class);
+        Production.addDefinition("D", "identifiers");
+        Production.addDefinition("N", "NUM");
         Grammar grammar = new Grammar(new NonTerminal("E"), Production.translate(test));
         Lexer lexer = new Lexer();
         lexer.inputString("(a+15)*b");
@@ -130,7 +129,7 @@ public class ParserTest {
         parser.printFirst();
         parser.printFollow();
         parser.printSelect();
-        parser.LL();
+//        parser.LL();
     }
 
     

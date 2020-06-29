@@ -14,17 +14,11 @@ import java.util.Objects;
  * and its type is varied. Be careful not to use it as the sign to compare with NonTerminal.
  */
 public class Terminal extends Token {
-    public String context;
-    public Terminal(final String type,String name,String context) {
-        super(type,name);
-        this.context = context;
-    }
-    public Terminal(final String type,String name) {
-        super(type,name);
+    public Terminal(final String type,String subType,String context) {
+        super(type,subType,context);
     }
     public Terminal(String context) {
-        super("Terminal","");
-        this.context = context;
+        super("Terminal","",context);
     }
     @Override public boolean equals(Object o) {
         if (this == o){
@@ -34,11 +28,11 @@ public class Terminal extends Token {
             return false;
         }
         Terminal terminal = (Terminal) o;
-        return this.context.equals(terminal.context) &&this.context.equals(terminal.context)&& this.type == terminal.type;
+        return this.context.equals(terminal.context);
     }
     @Override
     public int hashCode() {
-        return Objects.hash(this.context,this.context,this.type);
+        return Objects.hash(this.context);
     }
     
 }

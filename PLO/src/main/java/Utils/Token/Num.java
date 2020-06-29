@@ -26,9 +26,7 @@ public class Num extends Terminal {
             return false;
         }
         final Num num = (Num) o;
-        return this
-            .context
-            .equals(num.context);
+        return this.context.equals(num.context);
     }
     @Override public int hashCode() {
         return Objects.hash(this.context);

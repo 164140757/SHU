@@ -21,8 +21,15 @@ import java.util.Objects;
  * which could be used to distinguish from the Terminal.
  */
 public class NonTerminal extends Token {
-    public NonTerminal(String letter) {
-        super("NonTerminal", letter);
+    public NonTerminal(String context) {
+        super("NonTerminal","", context);
+    }
+    public NonTerminal(String subType,String context) {
+        super("NonTerminal",subType, context);
+    }
+    public  NonTerminal(NonTerminal nonTerminal){
+        super("NonTerminal",nonTerminal.subType,nonTerminal.context);
+
     }
     // same if letter equals with o
     @Override public boolean equals(Object o) {
@@ -32,11 +39,11 @@ public class NonTerminal extends Token {
         if (o == null || getClass() != o.getClass()){
             return false;
         }
-        NonTerminal nonTerminal = (NonTerminal) o;
-        return this.sign.equals(nonTerminal.sign);
+        NonTerminal nt= (NonTerminal) o;
+        return this.context.equals(nt.context) ;
     }
     @Override
     public int hashCode() {
-        return Objects.hash(this.sign);
+        return Objects.hash(this.context);
     }
 }

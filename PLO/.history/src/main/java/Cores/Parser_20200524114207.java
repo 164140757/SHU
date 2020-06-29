@@ -70,7 +70,7 @@ public class Parser {
     }
     public void run(){
         getFirst();
-         getFollow();
+        getFollow();
         getSelect();
         LL();
      }

@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="untitled" targetName="untitled" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="99f4d5e0-f7f1-4d7e-9fd8-f21ccbed1e69" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Openmp/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/.idea/Openmp.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/CMakeCache.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/CMakeFiles/3.16.5/CMakeCCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/CMakeFiles/3.16.5/CMakeCXXCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/CMakeFiles/3.16.5/CMakeDetermineCompilerABI_C.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/CMakeFiles/3.16.5/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/CMakeFiles/3.16.5/CMakeRCCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/CMakeFiles/3.16.5/CMakeSystem.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/CMakeFiles/3.16.5/CompilerIdC/CMakeCCompilerId.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/CMakeFiles/3.16.5/CompilerIdC/a.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/CMakeFiles/3.16.5/CompilerIdCXX/CMakeCXXCompilerId.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/CMakeFiles/3.16.5/CompilerIdCXX/a.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/CMakeFiles/Openmp.dir/CXX.includecache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/CMakeFiles/Openmp.dir/DependInfo.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/CMakeFiles/Openmp.dir/build.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/CMakeFiles/Openmp.dir/cmake_clean.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/CMakeFiles/Openmp.dir/depend.internal" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/CMakeFiles/Openmp.dir/depend.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/CMakeFiles/Openmp.dir/flags.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/CMakeFiles/Openmp.dir/includes_CXX.rsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/CMakeFiles/Openmp.dir/link.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/CMakeFiles/Openmp.dir/linklibs.rsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/CMakeFiles/Openmp.dir/main.cpp.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/CMakeFiles/Openmp.dir/objects.a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/CMakeFiles/Openmp.dir/objects1.rsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/CMakeFiles/Openmp.dir/progress.make" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/CMakeFiles/cmake.check_cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/Openmp.cbp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/Openmp.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/cmake-build-debug/cmake_install.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Openmp/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO 简易编译器的实现.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../PLO 简易编译器的实现.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__aopalliance_aopalliance_1_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_2_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__ch_qos_logback_logback_core_1_2_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__com_beust_jcommander_1_32.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__com_fasterxml_classmate_0_8_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_9_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_9_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_9_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__com_google_code_findbugs_jsr305_1_3_9.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__com_google_code_javaparser_javaparser_1_0_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__com_google_errorprone_error_prone_annotations_2_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__com_google_guava_guava_24_1_1_jre.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__com_google_inject_extensions_guice_multibindings_4_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__com_google_inject_guice_4_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__com_google_j2objc_j2objc_annotations_1_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__com_jhlabs_filters_2_0_235.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__com_sun_istack_istack_commons_runtime_3_0_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__com_sun_mail_javax_mail_1_6_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__com_sun_xml_bind_jaxb_impl_2_3_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__com_sun_xml_fastinfoset_FastInfoset_1_2_13.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__com_thoughtworks_paranamer_paranamer_2_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_9_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__commons_collections_commons_collections_3_2_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__commons_io_commons_io_2_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__commons_lang_commons_lang_2_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__commons_logging_commons_logging_1_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__commons_net_commons_net_3_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__io_dropwizard_metrics_metrics_core_3_2_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__io_netty_netty_3_4_0_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__javax_activation_activation_1_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__javax_annotation_javax_annotation_api_1_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__javax_inject_javax_inject_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__javax_mail_javax_mail_api_1_6_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__javax_validation_validation_api_1_1_0_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__javax_ws_rs_javax_ws_rs_api_2_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__javax_xml_bind_jaxb_api_2_3_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__net_jodah_failsafe_1_0_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_antlr_antlr4_4_5_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_apache_avro_avro_1_7_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_apache_avro_avro_ipc_1_7_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_apache_axis2_axis2_1_6_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_apache_commons_commons_compress_1_12.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_apache_commons_commons_math3_3_6_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_5_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_apache_httpcomponents_httpmime_4_5_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_6_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_apache_logging_log4j_log4j_core_2_6_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_apache_solr_solr_solrj_7_2_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_apache_velocity_velocity_1_7.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_apache_zookeeper_zookeeper_3_4_10.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_biojava_biojava_alignment_5_3_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_biojava_biojava_core_5_3_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_biojava_thirdparty_forester_1_038.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_checkerframework_checker_compat_qual_2_0_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_codehaus_jackson_jackson_core_asl_1_9_13.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_codehaus_jackson_jackson_mapper_asl_1_9_13.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_codehaus_mojo_animal_sniffer_annotations_1_14.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_codehaus_woodstox_stax2_api_3_1_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_codehaus_woodstox_woodstox_core_asl_4_4_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_glassfish_hk2_external_aopalliance_repackaged_2_4_0_b10.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_glassfish_hk2_external_javax_inject_2_4_0_b10.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_glassfish_hk2_hk2_api_2_4_0_b10.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_glassfish_hk2_hk2_locator_2_4_0_b10.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_glassfish_hk2_hk2_utils_2_4_0_b10.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_glassfish_hk2_osgi_resource_locator_1_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_glassfish_jaxb_jaxb_core_2_3_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_glassfish_jaxb_jaxb_runtime_2_3_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_glassfish_jaxb_txw2_2_3_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_glassfish_jersey_bundles_repackaged_jersey_guava_2_17.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_glassfish_jersey_core_jersey_client_2_17.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_glassfish_jersey_core_jersey_common_2_17.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_glassfish_jersey_media_jersey_media_jaxb_2_17.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_hibernate_hibernate_validator_5_0_1_Final.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_javassist_javassist_3_18_1_GA.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_jblas_jblas_1_2_4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_1_1_GA.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_jgrapht_jgrapht_core_1_3_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_jheaps_jheaps_0_10.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_jvnet_jaxb2_commons_jaxb2_basics_1_11_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_jvnet_jaxb2_commons_jaxb2_basics_runtime_1_11_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_jvnet_jaxb2_commons_jaxb2_basics_tools_1_11_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_jvnet_staxex_stax_ex_1_7_8.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_mortbay_jetty_jetty_6_1_26.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_mortbay_jetty_jetty_util_6_1_26.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_mortbay_jetty_servlet_api_2_5_20081211.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_noggit_noggit_0_8.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_slf4j_jcl_over_slf4j_1_7_7.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_25.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_swinglabs_swing_worker_1_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_swinglabs_swingx_1_6_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__org_xerial_snappy_snappy_java_1_0_5.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/.idea/libraries/Maven__uk_ac_ebi_uniprot_japi_1_0_30.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/src/main/java/Utils/Grammer/Production.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PLO/src/main/java/Utils/Grammer/Production.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/src/test/java/Utils/Grammar/ProductionSpec.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PLO/src/test/java/Utils/Grammar/ProductionSpec.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/classes/Cores/Lexer.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PLO/target/classes/Cores/Lexer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/classes/Cores/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PLO/target/classes/Cores/Parser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/classes/Exceptions/GrammarError.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PLO/target/classes/Exceptions/GrammarError.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/classes/Exceptions/SyntaxException.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PLO/target/classes/Exceptions/SyntaxException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/classes/Utils/Grammer/Grammar.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PLO/target/classes/Utils/Grammer/Grammar.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/classes/Utils/Grammer/Production$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PLO/target/classes/Utils/Grammer/Production$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/classes/Utils/Grammer/Production.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PLO/target/classes/Utils/Grammer/Production.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/classes/Utils/IO/Reader.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PLO/target/classes/Utils/IO/Reader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/classes/Utils/IO/Writer.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PLO/target/classes/Utils/IO/Writer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/classes/Utils/Polisher/GrammarPolisher.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PLO/target/classes/Utils/Polisher/GrammarPolisher.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/classes/Utils/Token/Del.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PLO/target/classes/Utils/Token/Del.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/classes/Utils/Token/NonTerminal.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PLO/target/classes/Utils/Token/NonTerminal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/classes/Utils/Token/Num.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PLO/target/classes/Utils/Token/Num.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/classes/Utils/Token/Ope.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PLO/target/classes/Utils/Token/Ope.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/classes/Utils/Token/Terminal.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PLO/target/classes/Utils/Token/Terminal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/classes/Utils/Token/Token.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PLO/target/classes/Utils/Token/Token.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/classes/Utils/Token/Word.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PLO/target/classes/Utils/Token/Word.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/test-classes/Cores/LexerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PLO/target/test-classes/Cores/LexerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/test-classes/Cores/ParserTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PLO/target/test-classes/Cores/ParserTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/test-classes/Utils/Grammar/GrammerSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PLO/target/test-classes/Utils/Grammar/GrammerSpec.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/test-classes/Utils/Grammar/ProductionSpec.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PLO/target/test-classes/Utils/Grammar/ProductionSpec.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/test-classes/resources/IdentifiersTest/Name/case01Result.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/test-classes/resources/IdentifiersTest/Name/case02Result.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/test-classes/resources/IdentifiersTest/Name/case03Result.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/test-classes/resources/IdentifiersTest/Name/case04Result.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/test-classes/resources/IdentifiersTest/Name/case05Result.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/test-classes/resources/IdentifiersTest/Name/homework_1Result.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/test-classes/resources/IdentifiersTest/Statistic/HomeworkResult.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/test-classes/resources/IdentifiersTest/Statistic/case01Result.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/test-classes/resources/IdentifiersTest/Statistic/case02Result.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/test-classes/resources/IdentifiersTest/Statistic/case03Result.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/test-classes/resources/IdentifiersTest/Statistic/case04Result.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/test-classes/resources/IdentifiersTest/Statistic/case05Result.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/test-classes/resources/IdentifiersTest/Statistic/homework_1Result.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/test-classes/resources/IdentifiersTest/case01.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/test-classes/resources/IdentifiersTest/case02.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/test-classes/resources/IdentifiersTest/case03.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/test-classes/resources/IdentifiersTest/case04.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/test-classes/resources/IdentifiersTest/case05.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/test-classes/resources/IdentifiersTest/homework_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/target/test-classes/resources/writerTest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PLO/第一次.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../PLO/第一次.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../database/database_qt5_homework" beforeDir="false" afterPath="$PROJECT_DIR$/../database/database_qt5_homework" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../编译原理17121444白皓天实验四.zip" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1dq0We9FO5UBHIRpB3zca3QvN7w" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="cf.first.check.clang-format" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../exams/compliation_theory/CMakeLists.txt" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RunManager">
+    <configuration name="untitled" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="untitled" TARGET_NAME="untitled" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="untitled" RUN_TARGET_NAME="untitled">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="99f4d5e0-f7f1-4d7e-9fd8-f21ccbed1e69" name="Default Changelist" comment="" />
+      <created>1593137348031</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1593137348031</updated>
+      <workItem from="1593137349763" duration="4422000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="933" y="187" key="FileChooserDialogImpl" timestamp="1593157749336">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="933" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1593157749336" />
+    <state width="1493" height="217" key="GridCell.Tab.0.bottom" timestamp="1593157770007">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="217" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1593157770007" />
+    <state width="1493" height="217" key="GridCell.Tab.0.center" timestamp="1593157770007">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="217" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1593157770007" />
+    <state width="1493" height="217" key="GridCell.Tab.0.left" timestamp="1593157770007">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="217" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1593157770007" />
+    <state width="1493" height="217" key="GridCell.Tab.0.right" timestamp="1593157770007">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="217" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1593157770007" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1593156245231">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1536.864@0.0.1536.864" timestamp="1593156245231" />
+  </component>
+</project>

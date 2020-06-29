@@ -1,0 +1,17 @@
+D:\Development\SHU\PLO\src\main\java\Cores\Lexer.java
+D:\Development\SHU\PLO\src\main\java\Cores\Parser.java
+D:\Development\SHU\PLO\src\main\java\Utils\Grammer\Grammar.java
+D:\Development\SHU\PLO\src\main\java\Utils\Token\Terminal.java
+D:\Development\SHU\PLO\src\main\java\Utils\Token\NonTerminal.java
+D:\Development\SHU\PLO\src\main\java\Utils\Polisher\GrammarPolisher.java
+D:\Development\SHU\PLO\src\main\java\Utils\Token\Del.java
+D:\Development\SHU\PLO\src\main\java\Utils\IO\Reader.java
+D:\Development\SHU\PLO\src\main\java\Exceptions\GrammarError.java
+D:\Development\SHU\PLO\src\main\java\Utils\IO\Writer.java
+D:\Development\SHU\PLO\src\main\java\Exceptions\SyntaxException.java
+D:\Development\SHU\PLO\src\main\java\Utils\Grammer\Production.java
+D:\Development\SHU\PLO\src\main\java\Utils\Token\Token.java
+D:\Development\SHU\PLO\src\main\java\Utils\Token\Word.java
+D:\Development\SHU\PLO\src\main\java\Utils\Token\Num.java
+D:\Development\SHU\PLO\src\main\java\UI\TestPanel.java
+D:\Development\SHU\PLO\src\main\java\Utils\Token\Ope.java

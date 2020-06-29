@@ -15,12 +15,12 @@ import java.util.Objects;
 
 public class Del extends Terminal{
     private static HashSet<Character> del;
-    public Del(String name) {
-        super("Del",name);
+    public Del(String context) {
+        super("Del","",context);
     }
     public static void init(){
         del = new HashSet<>();
-        del.addAll(Arrays.asList('（','）','，',',','；','.','(',')',';'));
+        del.addAll(Arrays.asList('（','）','，',',','；','.','(',')',';','|'));
     }
     public static boolean isDel(Character c){
         return del.contains(c);
@@ -34,11 +34,9 @@ public class Del extends Terminal{
             return false;
         }
         final Del del = (Del) o;
-        return this
-            .context
-            .equals(del.context) && this.sign.equals(del.sign);
+        return this.context.equals(del.context) ;
     }
     @Override public int hashCode() {
-        return Objects.hash(this.context,this.sign);
+        return Objects.hash(this.context);
     }
 }

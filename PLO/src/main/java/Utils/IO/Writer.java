@@ -8,14 +8,14 @@
  * @Description: 
  */
 package Utils.IO;
-
-import IO.AbstractFileWriter;
-
-import java.io.IOException;
-
-public class Writer extends AbstractFileWriter {
-    public Writer(String outputPath) throws IOException {
-        super(outputPath);
-    }
-
-}
+//
+//import IO.AbstractFileWriter;
+//
+//import java.io.IOException;
+//
+//public class Writer extends AbstractFileWriter {
+//    public Writer(String outputPath) throws IOException {
+//        super(outputPath);
+//    }
+//
+//}

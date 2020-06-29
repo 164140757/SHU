@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/compilation_theory.dir/17121444-t2.cpp.o CMakeFiles/compilation_theory.dir/Utils/Reader.cpp.o CMakeFiles/compilation_theory.dir/Core/Grammar.cpp.o CMakeFiles/compilation_theory.dir/Core/Parser.cpp.o  -o compilation_theory 

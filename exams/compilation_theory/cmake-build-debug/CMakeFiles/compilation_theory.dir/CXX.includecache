@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/mnt/d/Development/SHU/exams/compilation_theory/17121444-t2.cpp
+definitions.h
+/mnt/d/Development/SHU/exams/compilation_theory/definitions.h
+iostream
+-
+fstream
+-
+sstream
+-
+iterator
+-
+
+/mnt/d/Development/SHU/exams/compilation_theory/Utils/Reader.cpp
+Reader.h
+/mnt/d/Development/SHU/exams/compilation_theory/Utils/Reader.h
+
+/mnt/d/Development/SHU/exams/compilation_theory/Utils/Reader.h
+string
+-
+
+/mnt/d/Development/SHU/exams/compilation_theory/definitions.h
+vector
+-
+set
+-
+map
+-
+stack
+-
+

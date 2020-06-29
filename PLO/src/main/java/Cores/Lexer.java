@@ -1,13 +1,8 @@
 package Cores;
 
-import Utils.IO.Reader;
+//import Utils.IO.Reader;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.PushbackReader;
-import java.io.StringReader;
-import java.util.ArrayList;
+import java.io.*;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
@@ -23,17 +18,24 @@ public class Lexer {
     private HashSet<String> funcs;
     // words for reserved words and ID
     private HashMap<String, Word> words;
-    private HashMap<Word, Integer> IDNums;
+    private final int pushBackBufSize = 2;
 
     public Lexer() {
         init();
     }
-    
+
+    public Lexer(File file) {
+        init();
+        try {
+            stream = new PushbackReader(new FileReader(file),pushBackBufSize);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
     private void init() {
         words = new HashMap<>();
-        IDNums = new HashMap<>();
-        funcs = new HashSet<>(Arrays.asList("sin","cos","tan","sqrt"));
+        funcs = new HashSet<>(Arrays.asList("sin", "cos", "tan", "sqrt"));
         // reversed words
         reserve("begin", "call", "const", "do", "end"
                 , "if", "else", "odd", "procedure", "read", "then",
@@ -44,27 +46,38 @@ public class Lexer {
         Del.init();
 
     }
-
-    public void input(String filePath) throws IOException {
-        Reader reader = new Reader(filePath);
-        stream = new PushbackReader(reader.getReader());
+//
+//    public void input(String filePath) throws IOException {
+//        Reader reader = new Reader(filePath);
+//        stream = new PushbackReader(reader.getReader(),pushBackBufSize);
+//    }
+    public void input(File test) throws IOException {
+        stream = new PushbackReader(new FileReader(test),pushBackBufSize);
     }
-
-    public void inputString(String s){
+    public void inputString(String s) {
         StringReader reader = new StringReader(s);
-        stream = new PushbackReader(reader);
+        stream = new PushbackReader(reader,pushBackBufSize);
     }
 
     private void reserve(String... lexemes) {
         for (String l : lexemes) {
             Word word = new Word(l);
-            words.put(word.type, word);
+            word.subType ="reservedWord" ;
+            words.put(l, word);
+            Word upper = new Word(l.toUpperCase());
+            upper.subType="reservedWord";
+            words.put(l.toUpperCase(),upper);
         }
     }
+
     private void reserve(Collection<String> lexemes) {
-        lexemes.forEach(e->{
+        lexemes.forEach(e -> {
             Word word = new Word(e);
-            words.put(word.type, word);
+            word.subType ="reservedWord" ;
+            words.put(e, word);
+            Word upper = new Word(e.toUpperCase());
+            upper.subType="reservedWord";
+            words.put(e.toUpperCase(),upper);
         });
     }
 
@@ -102,49 +115,45 @@ public class Lexer {
             do {
                 sBuf.append(peek);
                 peek = (char) stream.read();
-            } while (Character.isLetterOrDigit(peek));
+            } while (Character.isLetterOrDigit(peek)||peek == '_');
             // push back
             stream.unread(peek);
             String s = sBuf.toString();
             Word w = words.get(s);
             if (w != null) {
-                // ID numbers
-                IDNums.put(w, IDNums.get(w) + 1);
                 return w;
             }
             w = new Word(s);
             words.put(s, w);
-            IDNums.put(w, 1);
             return w;
         }
         // operators
         if (isOpe(peek)) {
-            Ope ope = new Ope(" ");
-            ope.context = String.valueOf(peek);
+            Ope ope = new Ope(String.valueOf(peek));
             // single
             switch (peek) {
-                case '+' -> {
-                    ope.sign = "plus";
+                case '+' :{
+                    ope.subType = "plus";
                     return ope;
                 }
-                case '-' -> {
-                    ope.sign = "minus";
+                case '-' : {
+                    ope.subType = "minus";
                     return ope;
                 }
-                case '*' -> {
-                    ope.sign = "multiply";
+                case '*' : {
+                    ope.subType = "multiply";
                     return ope;
                 }
-                case '/' -> {
-                    ope.sign = "divide";
+                case '/' : {
+                    ope.subType = "divide";
                     return ope;
                 }
-                case '=' -> {
-                    ope.sign = "equal";
+                case '=' :{
+                    ope.subType = "equal";
                     return ope;
                 }
-                case '#' -> {
-                    ope.sign = "unequal";
+                case '#' : {
+                    ope.subType = "unequal";
                     return ope;
                 }
             }
@@ -155,31 +164,31 @@ public class Lexer {
                 peek = (char) stream.read();
                 if (peek == '=') {
                     b.append(peek);
-                }
-                else{
+                } else {
                     // push back
                     stream.unread(peek);
                 }
                 String s = b.toString();
+                ope = new Ope(s);
                 switch (s) {
-                    case ">" -> {
-                        ope.sign = "greaterThan";
+                    case ">" : {
+                        ope.subType = "greaterThan";
                         return ope;
                     }
-                    case ">=" -> {
-                        ope.sign = "greaterThanOrEqual";
+                    case ">=" : {
+                        ope.subType = "greaterThanOrEqual";
                         return ope;
                     }
-                    case "<" -> {
-                        ope.sign = "lessThan";
+                    case "<" : {
+                        ope.subType = "lessThan";
                         return ope;
                     }
-                    case "<=" -> {
-                        ope.sign = "lessThanOrEqual";
+                    case "<=" : {
+                        ope.subType = "lessThanOrEqual";
                         return ope;
                     }
-                    case ":=" -> {
-                        ope.sign = "becomes";
+                    case ":=" : {
+                        ope.subType = "becomes";
                         return ope;
                     }
                 }
@@ -187,31 +196,33 @@ public class Lexer {
         }
         // delimiters
         if (isDel(peek)) {
-            Del del = new Del(" ");
-            del.context = String.valueOf(peek);
-
+            Del del = new Del(String.valueOf(peek));
             switch (peek) {
-                case '(', '（' -> {
-                    del.sign = "lParen";
+                case '(': {
+                    del.subType = "lParen";
                     return del;
                 }
-                case ')', '）' -> {
-                    del.sign = "rParen";
+                case ')': {
+                    del.subType = "rParen";
                     return del;
                 }
-                case ',', '，' -> {
-                    del.sign = "comma";
+                case ',' : {
+                    del.subType = "comma";
                     return del;
                 }
-                case ';', '；' -> {
-                    del.sign = "semicolon";
+                case ';': {
+                    del.subType = "semicolon";
                     return del;
                 }
-                case '.' -> {
-                    del.sign = "period";
+                case '.': {
+                    del.subType = "period";
                     return del;
                 }
-
+                // for production
+                case '|' : {
+                    del.subType = "separator";
+                    return del;
+                }
             }
         }
         return null;
@@ -247,6 +258,9 @@ public class Lexer {
                             break;
                         }
                     }
+                } else {
+                    stream.unread(peek);
+                    peek = '/';
                 }
 
             }
@@ -258,9 +272,6 @@ public class Lexer {
         return words;
     }
 
-    public HashMap<Word, Integer> getIDNums() {
-        return IDNums;
-    }
 
     public HashSet<String> getFuncs() {
         return funcs;

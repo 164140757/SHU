@@ -18,18 +18,21 @@ package Utils.Token;
 import java.util.Objects;
 
 public class Token {
-    public String sign;
+    public String subType;
     public String type;
-    public Token(String type,String sign) {
+    public String context;
+
+    public Token(String type,String subType,String context) {
         this.type = type;
-        this.sign = sign;
+        this.subType = subType;
+        this.context = context;
     }
 
-    public Token (String letter) {
-        this.sign = letter;
+    public Token (String context) {
+        this.context = context;
     }
     public NonTerminal toNonTerminal(){
-        return new NonTerminal(sign);
+        return new NonTerminal(subType,context);
     }
 
     // same if letter equals with o
@@ -42,11 +45,9 @@ public class Token {
             return false;
         }
         final Token token = (Token) o;
-        return this
-            .sign
-            .equals(token.sign);
+        return this.context.equals(token.context);
     }
     @Override public int hashCode() {
-        return Objects.hash(this.sign);
+        return Objects.hash(this.context);
     }
 }

@@ -1,25 +1,18 @@
 /*  @Author: Haotian Bai @Github: https://github.com/164140757 @Date: 2020-05-09
  *  12:16:24 @LastEditors: Haotian Bai @LastEditTime: 2020-05-11 22:02:52 @FileP
  * ath: \PLO\src\main\java\Cores\Parser.java @Description:
-*/
+ */
 package Cores;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import java.util.Stack;
-import java.util.Vector;
+import java.util.*;
 import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 import Exceptions.GrammarError;
 import Utils.Grammer.Grammar;
 import Utils.Grammer.Production;
 import Utils.Token.NonTerminal;
-import Utils.Token.Terminal;
 import Utils.Token.Token;
 
 public class Parser {
@@ -37,43 +30,47 @@ public class Parser {
     HashMap<NonTerminal, Set<Token>> follow;
     HashMap<NonTerminal, Boolean> followSetChanged;
     HashMap<NonTerminal, Production> productions;
-    HashMap<Production, Set<Token>> select;
+    HashMap<Production, Set<Token>> selectMap;
+    private final int tableSize = 100;
+    private Vector<String[]> analyseTable;
 
     public Parser(Grammar grammar, Lexer lexer) {
         assert (grammar != null);
         assert (lexer != null);
         this.lexer = lexer;
         this.grammar = grammar;
+
         tokenStack = new Stack<>();
-        tokenStack.add(new Token("Terminal", "!"));
+        tokenStack.add(new Token("#"));
         tokenStack.add(grammar.getStartToken());
         productions = grammar.getProductionsMap();
         first = new HashMap<>();
         firstEmpty = new HashMap<>();
         follow = new HashMap<>();
         followSetChanged = new HashMap<>();
-        select = new HashMap<>();
+        selectMap = new HashMap<>();
+
     }
 
     public Parser(Grammar grammar) {
         assert (grammar != null);
         this.grammar = grammar;
         tokenStack = new Stack<>();
-        tokenStack.add(new Token("Terminal", "!"));
         tokenStack.add(grammar.getStartToken());
         productions = grammar.getProductionsMap();
         first = new HashMap<>();
         firstEmpty = new HashMap<>();
         follow = new HashMap<>();
         followSetChanged = new HashMap<>();
-        select = new HashMap<>();
+        selectMap = new HashMap<>();
     }
+
     public void run() throws IOException, GrammarError {
         getFirst();
         getFollow();
         getSelect();
-        LL();
     }
+
     /**
      * make sure their is no left recursion before using this class.
      */
@@ -113,6 +110,8 @@ public class Parser {
         // add to first map
         first.put(production.index, firstSet);
         firstEmpty.put(production.index, pEmpty);
+        // give back
+        tmpFirstSet.addAll(firstSet);
         return pEmpty;
     }
 
@@ -126,12 +125,12 @@ public class Parser {
             // check every possible token for a given production
             for (Token token : tokens) {
                 // only A -> #
-                if (token.sign.equals("#")) {
+                if (token.context.equals("#")) {
                     tmpFirstSet.add(token);
                     firstSet.add(token);
                     pEmpty = true;
                     // go on
-                    continue;
+                    break;
                 }
                 if (isTer(token)) {
                     // the token deduces terminal add to firstSet
@@ -149,14 +148,7 @@ public class Parser {
                         tmpFirstSet.addAll(tmp);
                         firstSet.addAll(tmp);
                         // check if it contains empty, yes -> go on, no-> break;
-                        if (!(tmpFirstSet.contains(new Token("#")))) {
-                            // clean tmp
-                            tmpFirstSet.clear();
-                            break;
-                        }
-
                         // clean tmp
-                        tmpFirstSet.clear();
 
                     } else {
                         Production p_ = productions.get(token.toNonTerminal());
@@ -164,19 +156,17 @@ public class Parser {
                         // add tmpFirstSet to FirstSet before removing tmpFirstSet for next input
                         firstSet.addAll(tmpFirstSet);
                         // check if it contains empty, yes -> go on, no-> break;
-                        if (!(tmpFirstSet.contains(new Token("#")))) {
-                            // clean tmp
-                            tmpFirstSet.clear();
-                            break;
-                        }
-
+                        // clean tmp
+                    }
+                    if (!(tmpFirstSet.contains(new Token("#")))) {
                         // clean tmp
                         tmpFirstSet.clear();
+                        break;
                     }
+                    tmpFirstSet.clear();
                     if (pEmpty) {
                         emptyNum++;
                         // remove empty as there is a choice and it's not the first level
-                        tmpFirstSet.remove(new Token("#"));
                         firstSet.remove(new Token("#"));
                     }
                 }
@@ -250,7 +240,7 @@ public class Parser {
                                     // nonTerminal
                                 } else {
                                     // next
-                                    Set<Token> set = first.get(n.toNonTerminal());
+                                    Set<Token> set = new HashSet<>(first.get(n.toNonTerminal()));
                                     Set<Token> stmp = follow.get(tt);
                                     if (stmp == null) {
                                         stmp = new HashSet<>();
@@ -270,7 +260,7 @@ public class Parser {
                                     // will remove everything from source[HashMap first] be careful filter not empty
                                     Set<Token> tmp = new HashSet<>();
                                     for (Token token : set) {
-                                        if (token.sign != "#")
+                                        if (!token.context.equals("#"))
                                             tmp.add(token);
                                     }
                                     set = tmp;
@@ -293,194 +283,250 @@ public class Parser {
     /**
      * should make sure getFirst and getFollow are done before.
      */
- public void getSelect() {
-    assert(!first.isEmpty() && !follow.isEmpty());
-    // iterate all productions
-    for (Entry<NonTerminal, Production> production : productions.entrySet()) {
-        NonTerminal k = production.getKey();
-        Production v = production.getValue();
-        // split productions
-        for (Vector<Token> p : v.target){
-            // check if the target production is empty
-            HashSet<Token> firstSet = new HashSet<>();
-            Set<Token> tmpFirstSet = new HashSet<>();
-            Production pNew = new Production(k, p);
-            boolean isEmpty = checkProductionFirst(firstSet, tmpFirstSet, pNew);
-            if (isEmpty) {
-                firstSet.remove(new Token("#"));
-                firstSet.addAll(follow.get(k));
+    public void getSelect() {
+        assert (!first.isEmpty() && !follow.isEmpty());
+        // iterate all productions
+        for (Entry<NonTerminal, Production> production : productions.entrySet()) {
+            NonTerminal k = production.getKey();
+            Production v = production.getValue();
+            // split productions
+            for (Vector<Token> p : v.target) {
+                // check if the target production is empty
+                HashSet<Token> firstSet = new HashSet<>();
+                Set<Token> tmpFirstSet = new HashSet<>();
+                Production pNew = new Production(k, p);
+                boolean isEmpty = checkProductionFirst(firstSet, tmpFirstSet, pNew);
+                if (isEmpty) {
+                    firstSet.remove(new Token("#"));
+                    firstSet.addAll(follow.get(k));
+                }
+                selectMap.put(pNew, firstSet);
             }
-            select.put(pNew, firstSet);
         }
-    }
 
-}
+    }
 
     /**
      * Use it after all three steps above have been finished.
-     * 
+     *
+     * -1 : overlap
+     * 0 : grammar fail
+     * 1 : win
      * @throws IOException
-     * @throws GrammarError
      */
-    void LL() throws IOException, GrammarError {
-        assert(first!=null && follow!=null &&select!= null);
-        // check LL 
-        checkLL();
-        Token t = tokenStack.pop();
-        Terminal tp = getScanNext();
-        while(!tokenStack.isEmpty()){
-            NonTerminal tt = t.toNonTerminal();
-            boolean fail = true;
-            for (Entry<Production,Set<Token>> map: select.entrySet()) {
-                Production k = map.getKey();
-                Set<Token> toCheck = map.getValue();
-                // find a way out
-                if(k.index.equals(tt)&&checkExist(tp,toCheck)){
-                    fail = false;
-                    // change stack, select contains single production
-                    // reverse
-                    Stack<Token> tpStack = new Stack<>();
-                    Vector<Token> tpVector = k.target.get(0);
-                    for (int i = tpVector.size()-1;i >= 0; i--) {
-                        tpStack.add(tpVector.get(i));
-                    }
-                    tokenStack.addAll(tpStack);
-                    // scan next
-                    if(k.target.get(0).get(0).sign.equals(tp.context)){
-                        tp = getScanNext();
-                        // clean 
-                        t = tokenStack.pop();
-                    }
+    public int LL() throws IOException {
+        assert (first != null && follow != null && selectMap != null);
+        analyseTable = new Vector<>();
+        if(!checkLL()){
+            return -1;
+        }
+//        checkLL();
+        Token t = tokenStack.peek();
+        Token scan = getScanNext();
+        int status = 0;
+        while (!tokenStack.isEmpty()) {
+            status = 0;
+            if(t.context.equals("#")){
+                status = 1;
+                break;
+            }
+            if(t.equals(scan)){
+                status = 1;
+                tokenStack.pop();
+                scan = getScanNext();
+                t = tokenStack.peek();
+            }else{
+                // ID
+                if(t.context.equals("ID")&&scan.type.equals("identifiers")){
+                    status = 1;
+                    tokenStack.pop();
+                    scan = getScanNext();
+                    t = tokenStack.peek();
+                }
+                //NUM
+                if(t.context.equals("N")&&scan.type.equals("NUM")){
+                    status = 1;
+                    tokenStack.pop();
+                    scan = getScanNext();
+                    t = tokenStack.peek();
+                }
+                // check after scan
+                if(scan == null){
+                    status = 1;
                     break;
                 }
             }
-            //check additional definitions
-            if(Production.preDefined.containsKey(t.sign.charAt(0))){
-                String className = Production.preDefined.get(t.sign.charAt(0)).getName();
-                if(tp.getClass().getName().equals(className)){
-                    fail = false;
-                    tp = getScanNext();;
-             
+            for (Entry<Production, Set<Token>> map : selectMap.entrySet()) {
+                Production k = map.getKey();
+                Set<Token> toCheck = map.getValue();
+                // find a way out
+                if (k.index.equals(t.toNonTerminal()) && checkExist(scan, toCheck)) {
+                    status = 1;
+                    String[] row = new String[4];
+                    row[0] = String.valueOf(analyseTable.size() + 1);
+                    row[1] = setConcat(tokenStack);
+                    row[2] = scan.context;
+                    row[3] = k.index.context+"→" + setConcat(k.target.get(0));
+                    analyseTable.add(row);
+                    // A -> #
+                    if(k.target.get(0).get(0).context.equals("#")){
+                        tokenStack.pop();
+                        t = tokenStack.peek();
+                        break;
+                    }
+                    // reverse
+                    tokenStack.pop();
+                    Vector<Token> rt = new Vector<>(k.target.get(0));
+                    Collections.reverse(rt);
+                    tokenStack.addAll(rt);
+                    // new t to check
+                    t = tokenStack.peek();
+                    break;
                 }
             }
-            if(fail){
-                throw new GrammarError("You input doesn't map the grammar you defined.");
+            if(status==0){
+                return status;
             }
-            t = tokenStack.pop();
-            // empty , end
-            if(t.sign.equals("#")|| t.sign.equals("!")){
-                t = tokenStack.pop();
-                if(t.sign.equals("!")&&tp.context.equals("!")){
-                    continue;
-                    // acc
-                }
-            }
-            // terminal
-            if(t.sign.equals(tp.context)){
-                t = tokenStack.pop();
-                tp = getScanNext();
-            }
-            
+        }
+        // check lexer
+        if (lexer.scan() != null) {
+            status = 0;
+        }
 
-        }
-        // check lexer 
-        if(lexer.scan()!=null){
-            throw new GrammarError("You input doesn't map the grammar you defined.");
-        }
+        return status;
     }
-    
-    private Terminal getScanNext() throws IOException {
-        Terminal tp = (Terminal)lexer.scan();
-        if(tp == null){
-            tp = new Terminal("!");
+
+    private boolean checkLL() {
+        // overlap for productions starting with same indexes
+        Map<NonTerminal, List<Entry<Production, Set<Token>>>> res = selectMap.entrySet().stream().collect(Collectors.groupingBy(productionSetEntry -> productionSetEntry.getKey().index));
+        for (Entry<NonTerminal, List<Entry<Production, Set<Token>>>> entry : res.entrySet()) {
+            List<Entry<Production, Set<Token>>> v = entry.getValue();
+            HashSet<Token> set = new HashSet<>(v.get(0).getValue());
+            HashSet<Token> overlap = new HashSet<>(set);
+            v.remove(0);
+            for (Entry<Production, Set<Token>> tokens : v) {
+                overlap.retainAll(tokens.getValue());
+                if (overlap.size()!=0) {
+                    return false;
+                }
+                set.addAll(tokens.getValue());
+            }
         }
+        return true;
+    }
+
+    private String setConcat(Collection<Token> tokenStack) {
+        StringBuilder buffer = new StringBuilder();
+        for (Token token : tokenStack) {
+            buffer.append(token.context).append(" ");
+        }
+
+        return buffer.toString();
+    }
+
+    private Token getScanNext() throws IOException {
+        Token tp = lexer.scan();
         return tp;
     }
 
     // only check context
-    private boolean checkExist(Terminal input, Set<Token> toCheck) {
-        for (Token token : toCheck) {
-            if(token.sign.equals(input.context)){
-                return true;
-            }
+    private boolean checkExist(Token scan, Set<Token> toCheck) throws IOException {
+        if (toCheck.contains(scan)) {
+            return true;
+        } else if (Production.preDefined != null ) {
+            // additional definitions
+          if(scan.type.equals("identifiers")&&checkSelect(toCheck,"ID")){
+            return true;
+          }
+            return checkSelect(toCheck,"N")&& scan.type.equals("NUM");
         }
+        return false;
+    }
+
+    // check only name and ignore the class
+    private boolean checkSelect(Set<Token> toCheck, String n) {
         for (Token token : toCheck) {
-            if(Production.preDefined!=null){
-                // additional definitions
-                if(Production.preDefined.containsKey(token.sign.charAt(0))){
-                    String className = Production.preDefined.get(token.sign.charAt(0)).getName();
-                    if(input.getClass().getName().equals(className)){
-                        return true;
-                    }
-                }
+            if(token.context.equals(n)){
+                return true;
             }
         }
         return false;
     }
 
-    private void checkLL() throws GrammarError {
-        assert(select!=null);
-        for(NonTerminal t : first.keySet()){
-            Set<Token> set = new HashSet<>();
-            for (Entry<Production,Set<Token>> map: select.entrySet()) {
-                Production k = map.getKey();
-                Set<Token> tokens = map.getValue();
-                if(k.index.equals(t)){
-                    if(set.size() == 0){
-                        set.addAll(tokens);
-                    }
-                    // set contains the same token in the previous result
-                    else{
-                        if(!set.addAll(tokens)){
-                            throw new GrammarError("Your input grammars don't follow LL Standard.");
-                        }
-                    }
-                }
-            }
-        }
-    }
+//    private void checkLL() {
+//        assert(select!=null);
+//        for(NonTerminal t : first.keySet()){
+//            Set<Token> set = new HashSet<>();
+//            for (Entry<Production,Set<Token>> map: select.entrySet()) {
+//                Production k = map.getKey();
+//                Set<Token> tokens = map.getValue();
+//                if(k.index.equals(t)){
+//                    if(set.size() == 0){
+//                        set.addAll(tokens);
+//                    }
+//                    // set contains the same token in the previous result
+//                    else{
+//                        if(!set.addAll(tokens)){
+//                           towrite.add("Your input grammar is wrong!");
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
 
     boolean isTer(Token t) {
-        return t.type != "NonTerminal";
+        return !t.type.equals("NonTerminal");
     }
 
-   
-    void printHashSet(Set<Token> set){
-        set.forEach(t->{
-            System.out.print(t.sign+" ");
+
+    void printHashSet(Set<Token> set) {
+        set.forEach(t -> {
+            System.out.print(t.context + " ");
         });
     }
-    void printFirst(){
+
+    public void printFirst() {
         System.out.println("First:");
-        first.forEach((k,v)->{
-            System.out.print(k.sign+":{");
+        first.forEach((k, v) -> {
+            System.out.print(k.context + ":{");
             printHashSet(v);
             System.out.print("}\t");
         });
         System.out.println("\n");
     }
-    void printFollow(){
-        System.out.println("Follow:");
-        follow.forEach((k,v)->{
-            System.out.print(k.sign+":{");
-            printHashSet(v);
-            System.out.print("}\t");
-        });
-        System.out.println("\n");
-    }
-    void printSelect(){
 
-        select.forEach((k,v)->{
+    public void printFollow() {
+        System.out.println("Follow:");
+        follow.forEach((k, v) -> {
+            System.out.print(k.context + ":{");
+            printHashSet(v);
+            System.out.print("}\t");
+        });
+        System.out.println("\n");
+    }
+
+    public void printSelect() {
+
+        selectMap.forEach((k, v) -> {
             StringBuilder sBuilder = new StringBuilder();
-            k.target.forEach(vt->{
-                vt.forEach(t->{
-                    sBuilder.append(t.sign);
+            k.target.forEach(vt -> {
+                vt.forEach(t -> {
+                    sBuilder.append(t.context);
                 });
             });
-            System.out.print(k.index.sign+"->{"+sBuilder.toString()+"}:<");
+            System.out.print(k.index.context + "->{" + sBuilder.toString() + "}:<");
             printHashSet(v);
             System.out.print(">\n");
         });
         System.out.println("\n");
+    }
+
+    public HashMap<Production, Set<Token>> getSelectMap() {
+        return selectMap;
+    }
+
+    public Vector<String[]> getAnalyseTable() {
+        return analyseTable;
     }
 }
